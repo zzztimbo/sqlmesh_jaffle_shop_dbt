@@ -1,0 +1,5 @@
+.cache/
+__pycache__/
+jaffle_shop.duckdb
+logs/
+target/
