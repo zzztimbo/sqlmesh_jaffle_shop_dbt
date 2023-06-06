@@ -1,0 +1,14 @@
+test_stg_customers:
+  model: main.stg_customers
+  inputs:
+   main.raw_customers:
+     rows:
+     - id: 1
+       first_name: 'Bob'
+       last_name: 'Loblaw'
+  outputs:
+    query:
+      rows:
+      - customer_id: 1
+        first_name: 'Bob'
+        last_name: 'Loblaw'

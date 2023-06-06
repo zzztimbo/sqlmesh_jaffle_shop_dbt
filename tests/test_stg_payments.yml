@@ -1,0 +1,36 @@
+test_stg_payments:
+  model: main.stg_payments
+  inputs:
+   main.raw_payments:
+     rows:
+     - id: 1
+       order_id: 11 
+       payment_method: 'paypal'
+       amount: 10000
+  outputs:
+    ctes:
+      source:
+        rows:
+          - id: 1
+            order_id: 11
+            payment_method: 'paypal'
+            amount: 10000
+      renamed:
+        rows:
+          - payment_id: 1
+            order_id: 11
+            payment_method: 'paypal'
+            amount: 100
+      foo:
+        rows:
+          - payment_id: 1
+            order_id: 11
+            payment_method: 'paypal'
+            amount: 100
+            foobar_id: 1
+    query:
+      rows:
+        - payment_id: 1
+          order_id: 11
+          payment_method: 'paypal'
+          amount: 100
