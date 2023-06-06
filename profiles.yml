@@ -1,0 +1,11 @@
+config:
+  send_anonymous_usage_stats: false
+jaffle_shop:
+  outputs:
+    dev:
+      type: duckdb
+      path: jaffle_shop.duckdb
+    extensions:
+      - httpfs
+      - parquet
+  target: dev

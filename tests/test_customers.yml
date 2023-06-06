@@ -1,0 +1,114 @@
+test_customers_1:
+  model: main.customers
+  inputs:
+   main.stg_customers:
+     rows:
+     - customer_id: 1
+       first_name: 'Bob'
+       last_name: 'Loblaw'
+   main.stg_orders:
+     rows:
+     - customer_id: 1
+       order_id: 11
+       order_date: '2020-01-01'
+       status: 'shipped'
+     - customer_id: 1
+       order_id: 12
+       order_date: '2020-01-12'
+       status: 'shipped'
+   main.stg_payments:
+     rows:
+     - payment_id: 1
+       order_id: 11
+       amount: 10000
+       payment_method: "visa"
+     - payment_id: 2
+       order_id: 12
+       amount: 2999
+       payment_method: "visa"
+  outputs:
+    ctes:
+      customers:
+        rows:
+        - customer_id: 1
+          first_name: 'Bob'
+          last_name: 'Loblaw'
+    query:
+      rows:
+      - customer_id: 1
+        first_name: 'Bob'
+        last_name: 'Loblaw'
+        first_order: '2020-01-01'
+        most_recent_order: '2020-01-12'
+        number_of_orders: 2
+        customer_lifetime_value: 12999 
+
+test_customers_2:
+  model: main.customers
+  inputs:
+   main.stg_customers:
+     rows:
+     - customer_id: 1
+       first_name: 'Bob'
+       last_name: 'Loblaw'
+     - customer_id: 2
+       first_name: 'John'
+       last_name: 'Smith'
+   main.stg_orders:
+     rows:
+     - customer_id: 1
+       order_id: 11
+       order_date: '2020-01-01'
+       status: 'shipped'
+     - customer_id: 1
+       order_id: 12
+       order_date: '2020-01-12'
+       status: 'shipped'
+     - customer_id: 2
+       order_id: 13
+       order_date: '2021-09-05'
+       status: 'shipped'
+     - customer_id: 2
+       order_id: 14
+       order_date: '2022-12-01'
+       status: 'shipped'
+     - customer_id: 2
+       order_id: 15
+       order_date: '2022-12-15'
+       status: 'shipped'
+   main.stg_payments:
+     rows:
+     - payment_id: 1
+       order_id: 11
+       amount: 10000
+       payment_method: "visa"
+     - payment_id: 2
+       order_id: 12
+       amount: 2999
+       payment_method: "visa"
+     - payment_id: 3
+       order_id: 13 
+       amount: 2555 
+       payment_method: "visa"
+     - payment_id: 4
+       order_id: 14 
+       amount: 12345 
+       payment_method: "visa"
+  outputs:
+    query:
+      rows:
+      - customer_id: 1
+        first_name: 'Bob'
+        last_name: 'Loblaw'
+        first_order: '2020-01-01'
+        most_recent_order: '2020-01-12'
+        number_of_orders: 2
+        customer_lifetime_value: 12999 
+      - customer_id: 2
+        first_name: 'John'
+        last_name: 'Smith'
+        first_order: '2021-09-05'
+        most_recent_order: '2022-12-15'
+        number_of_orders: 3
+        customer_lifetime_value: 14900 
+
