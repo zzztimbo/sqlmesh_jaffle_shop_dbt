@@ -6,3 +6,4 @@ __pycache__/
 jaffle_shop.duckdb
 logs/
 target/
+.ipynb_checkpoints/
