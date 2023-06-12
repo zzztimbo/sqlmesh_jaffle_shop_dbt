@@ -1,1 +1,1 @@
-# sqlmesh_jaffle_shop
+# sqlmesh_jaffle_shop_dbt
