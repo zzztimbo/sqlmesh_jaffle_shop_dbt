@@ -1,7 +1,3 @@
--- {% call set_sql_header(config) %}
---     CREATE OR REPLACE TEMP MACRO add(a, b) AS a + b;
--- {%- endcall %}
-
 with source as (
     
     {#-
