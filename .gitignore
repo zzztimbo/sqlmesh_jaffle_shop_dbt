@@ -1,7 +1,6 @@
 .venv
-
 target/
-
+.vscode
 .cache/
 __pycache__/
 jaffle_shop.duckdb
